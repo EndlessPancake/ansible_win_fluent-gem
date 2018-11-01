@@ -11,8 +11,12 @@ Copy ***win_fluent-gem.ps1*** and ***win_fluent-gem.py*** files to **[default-mo
 - name: Install fluent plugins by td-agent's fluent-gem
   hosts: your Windows Server
   tasks:
-  - name: Add fluent-plugin-mongo
+  - name: Add fluent-plugin-mongo by this module
     win_fluent-gem:
-      record: host01
-      state: present
+    name: {{ items }}
+    state: present
+    with_itmes:
+      - fluent-plugin-forest
+      - fluent-plugin-mongo
+      - fluent-plugin-azure-loganalytics
 ```
