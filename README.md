@@ -26,11 +26,12 @@ Copy ***win_fluent-gem.ps1*** and ***win_fluent-gem.py*** files to **[default-mo
     - name: Install fluent plugin by win_fluent-gem module
       environment:
         http_proxy: http://10.10.10.1:8888
+        https_proxy: http://10.10.10.1:8888
       win_fluent-gem:
         name: {{ items }}
         state: present
-        with_itmes:
-          - fluent-plugin-mongo
-          - fluent-plugin-azure-loganalytics
+      with_itmes:
+        - fluent-plugin-mongo
+        - fluent-plugin-azure-loganalytics
 
 ```
